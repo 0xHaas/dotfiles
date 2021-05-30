@@ -81,13 +81,13 @@ install_universal_ctags () {
   if !(command_exists uctags); then
       # requirements
       if !(command_exists automake); then
-          doo brew install automake
+          doo arch -arm64 brew install automake
       fi
       if !(command_exists pkg-config); then
-          doo brew install pkg-config
+          doo arch -arm64 brew install pkg-config
       fi
       if !(command_exists libxml2); then
-          doo brew install libxml2
+          doo arch -arm64 brew install libxml2
       fi
       # Troubleshooting tips: If "error undefined macro AC_MSG_ERRO" error
       # https://github.com/pooler/cpuminer/issues/74
@@ -123,8 +123,8 @@ setup_ctags () {
 # Used by vim.ack plugin to do searching words in a project
 install_rg () {
   if !(command_exists rg); then
-    doo brew tap burntsushi/ripgrep https://github.com/BurntSushi/ripgrep.git
-    doo brew install burntsushi/ripgrep/ripgrep-bin
+    doo arch -arm64 brew tap burntsushi/ripgrep https://github.com/BurntSushi/ripgrep.git
+    doo arch -arm64 brew install burntsushi/ripgrep/ripgrep-bin
   else
     installed 'rg'
   fi
@@ -142,7 +142,7 @@ install_plug() {
 
 install_tmux () {
   if !(command_exists tmux); then
-    doo brew install tmux
+    doo arch -arm64 brew install tmux
   else
     installed 'tmux'
   fi
@@ -159,7 +159,7 @@ install_tpm() {
 
 setup_tmux_clipboard() {
   if is_osx && !(command_exists reattach-to-user-namespace); then
-    doo brew install reattach-to-user-namespace
+    doo arch -arm64 brew install reattach-to-user-namespace
   fi
 }
 
@@ -167,7 +167,7 @@ install_tmuxinator () {
   # Tmuxinator requires a higher ruby version
   # Using rbenv to manage ruby version for the root directory
   if !(command_exists rbenv); then
-      doo brew install rbenv
+      doo arch -arm64 brew install rbenv
       doo rbenv install 2.6.3
       doo rbenv local 2.6.3
   else
@@ -239,7 +239,7 @@ install_scm_breeze() {
 
 install_diff-so-fancy() {
   if !(command_exists diff-so-fancy); then
-    doo brew install diff-so-fancy
+    doo arch -arm64 brew install diff-so-fancy
     git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
     git config --bool --global diff-so-fancy.markEmptyLines false
   else
@@ -249,7 +249,7 @@ install_diff-so-fancy() {
 
 install_neovim() {
   if !(command_exists nvim); then
-    doo brew install neovim/neovim/neovim
+    doo arch -arm64 brew install neovim/neovim/neovim
     doo ln -s ~/.vim ~/.config/nvim
     doo ln -s ~/.vimrc ~/.config/nvim/init.vim
   else
@@ -263,7 +263,7 @@ install_neovim() {
 # Ligature for operator mono: https://github.com/kiliman/operator-mono-lig
 install_alacritty() {
   if !(command_exists alacritty); then
-    doo brew cask install alacritty
+    doo arch -arm64 brew cask install alacritty
 
     # clone
     doo git clone https://github.com/alacritty/alacritty.git
